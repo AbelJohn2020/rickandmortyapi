@@ -1,0 +1,27 @@
+{
+  "name": "rickandmortyapi",
+  "version": "1.0.0",
+  "description": "work with async to JavaScript",
+  "main": "src/index.js",
+  "scripts": {
+    "callback": "node src/callback/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbelJohn2020/rickandmortyapi.git"
+  },
+  "keywords": [
+    "callbacks",
+    "promise",
+    "async"
+  ],
+  "author": "Abel Arbildo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbelJohn2020/rickandmortyapi/issues"
+  },
+  "homepage": "https://github.com/AbelJohn2020/rickandmortyapi#readme",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
