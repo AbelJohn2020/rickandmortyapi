@@ -1,6 +1,6 @@
 //  we need to instance here
 let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-let API = 'https://rickandmortyapi.com/api/character';
+let API = 'https://rickandmortyapi.com/api/character/';
 
 //  we will build here 
 function fetchData(url_api, callback) {
@@ -13,7 +13,7 @@ function fetchData(url_api, callback) {
                 console.log("The status that it finds");
                 callback(null, JSON.parse(xhttp.responseText));
             } else {
-                const error = new Error(`Error in ${url_api}`);
+                const error = new Error('Error' + url_api);
                 return callback(error, null);
             }
         }
@@ -21,4 +21,15 @@ function fetchData(url_api, callback) {
     xhttp.send();
 }
 
-fetchData(API);
+fetchData(API, function (errorOne, dataOne) {
+    if(errorOne) return console.error(errorOne);
+    fetchData(API + dataOne.results[0].id, function (errorTwo, dataTwo) {
+        if(errorTwo) return console.error(errorTwo);
+        fetchData(dataTwo.origin.url, function (errorThree, dataThree) {
+            if(errorThree) return console.error(errorThree);
+            console.log(dataOne.info.count);
+            console.log(dataTwo.name);
+            console.log(dataThree.dimension);
+        })
+    })
+});
